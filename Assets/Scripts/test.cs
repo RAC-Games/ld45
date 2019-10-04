@@ -9,10 +9,7 @@ public class test : MonoBehaviour
 
     [Curve(0, 0f, 3f, 5f, true)]
     public AnimationCurve curveY;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+
 
     // Update is called once per frame
     void Update()
