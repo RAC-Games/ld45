@@ -29,11 +29,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        [Curve(0, 0, 3f, 5f, true)]
+        [Curve(0, 0, 1f, 3f, true)]
         [SerializeField]
         AnimationCurve jumpDistanceCurve;
 
-        [Curve(0, 0, 3f, 5f, true)]
+        [Curve(0, 0, 1f, 2f, true)]
         [SerializeField]
         AnimationCurve jumpHeightCurve;
 
@@ -49,8 +49,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
+        private bool m_EndJumping;
         private AudioSource m_AudioSource;
 
+        private bool inJump;
+        private float jumpStartTime;
+        private Vector3 jumpStartPos;
 
         // Use this for initialization
         private void Start()
@@ -71,9 +75,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Jump()
         {
             //jumpCurve = new AnimationCurve();
-
+            print("Jump");
+            inJump = true;
+            jumpStartTime = Time.time;
+            jumpStartPos = transform.position;
         }
 
+        private void EndJump()
+        {
+            inJump = false;
+        }
+
+        private void JumpUpdate()
+        {
+            print("jumpupdate");
+            float yPos = jumpHeightCurve.Evaluate(Time.time - jumpStartTime);
+            print(yPos);
+            m_MoveDir.y = yPos;
+            if (jumpHeightCurve.keys[jumpHeightCurve.keys.Length-1].time< Time.time - jumpStartTime)
+            {
+                inJump = false;
+            }
+        }
 
         // Update is called once per frame
         private void Update()
@@ -83,6 +106,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                print(m_Jump);
+                
+            }
+
+            if (inJump)
+            {
+                m_EndJumping = !CrossPlatformInputManager.GetButton("Jump");
+                print(m_EndJumping);
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -125,6 +156,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+            if (inJump)
+            {
+                if (m_EndJumping)
+                {
+                    EndJump();
+                }
+                else
+                {
+                    JumpUpdate();
+                }
+            }
+
 
             if (m_CharacterController.isGrounded)
             {
@@ -133,13 +176,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_Jump)
                 {
                     //m_MoveDir.y = m_JumpSpeed;
+                    
                     Jump();
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
                 }
             }
-            else
+            else if(!inJump)
             {
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
             }
