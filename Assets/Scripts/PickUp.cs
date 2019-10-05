@@ -7,9 +7,10 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent(typeof(GrapplingHook))]
 public class PickUp : MonoBehaviour
 {
-
     GrapplingHook grapplingHook;
     FirstPersonController fpc;
+    public GameObject hookObject;
+
     void Start()
     {
         grapplingHook = GetComponent<GrapplingHook>();
@@ -24,6 +25,7 @@ public class PickUp : MonoBehaviour
             if (other.CompareTag("Hook"))
             {
                 grapplingHook.enabled = true;
+                hookObject.SetActive(true);
             }
             if (other.CompareTag("Shoes"))
             {

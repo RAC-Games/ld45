@@ -1,4 +1,6 @@
 ﻿﻿using System.Collections;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -6,6 +8,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GrapplingHook : MonoBehaviour
 {
+
     [SerializeField] float grapplingSpeed;
     [SerializeField] GameObject hitMarker;
     Vector3 grapplingTarget;
@@ -27,7 +30,7 @@ public class GrapplingHook : MonoBehaviour
         {
             ShootHook();
         }
-        if (CrossPlatformInputManager.GetButtonUp("Fire1") && hasTarget)
+        if (!CrossPlatformInputManager.GetButton("Fire1"))
         {
             ReleaseHook();
         }
@@ -36,16 +39,18 @@ public class GrapplingHook : MonoBehaviour
     void ReleaseHook()
     {
         hasTarget = false;
+        shouldMove = false;
         lineRenderer.positionCount = 0;
         if(hook != null)
         {
             Destroy(hook);
         }
     }
+    bool shouldMove = false;
 
     private void FixedUpdate()
     {
-        if (hasTarget)
+        if (shouldMove)
         {
             GrapplingHookUpdate();
         }
@@ -59,15 +64,67 @@ public class GrapplingHook : MonoBehaviour
         {
             grapplingTarget = hit.point;
             hasTarget = true;
-            hook = GameObject.Instantiate(hitMarker, grapplingTarget, Camera.main.transform.rotation);
+            GenerateLine();
+            drawLine();
+            // hook = GameObject.Instantiate(hitMarker, grapplingTarget, Camera.main.transform.rotation);
         }
     }
-
+    async void drawLine()
+    {
+        Vector3 pos;
+        for (int i = 0; i < Resolution; i++)
+        {
+            lineRenderer.positionCount = i + 1;
+            lineRenderer.SetPosition(i, SineLine[i]);
+        }
+        await Task.Delay(ShootSpeed);
+        shouldMove = true;
+    }
     void GrapplingHookUpdate()
     {
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, transform.position + transform.right * 0.25f + transform.up * -0.1f);
         lineRenderer.SetPosition(1, grapplingTarget);
+
         characterController.Move((grapplingTarget - transform.position).normalized * grapplingSpeed);
     }
+    void GrapplingHookRollback() { }
+
+    private void GenerateLine()
+    {
+
+        B = grapplingTarget;
+        A = transform.position + transform.right * 0.25f + transform.up * -0.1f;
+
+
+        distance = (B - A).magnitude;
+        SineLine = new List<Vector3>();
+        SineLine.Add(A);
+        for (int i = 1; i < Resolution; i++)
+        {
+            dir = i * (B - A) / Resolution;
+
+            forward = dir.magnitude / distance;
+
+
+            perpendicular = new Vector3(dir.z / dir.magnitude, 0, -dir.x / dir.magnitude);
+            nextPos = A + dir + perpendicular * sineMagnitute * Mathf.Sin(forward * WaveScale);
+
+            SineLine.Add(nextPos);
+        }
+    }
+    Vector3 A;
+    Vector3 B;
+    public int ShootSpeed;
+    List<Vector3> SineLine;
+    public float sineMagnitute = 0.2f;
+    public int Resolution = 200;
+    public float WaveScale = 100f;
+    Vector3 dir;
+    float forward;
+    float distance;
+    Vector3 perpendicular;
+
+    Vector3 nextPos;
+
 }
