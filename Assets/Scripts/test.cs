@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class test : MonoBehaviour
 {
-    [Curve(0, 0, 3f, 5f, true)]
+     //[Curve(0, 0, 3f, 5f, true)]
     public AnimationCurve curveX;
 
     [Curve(0, 0f, 3f, 5f, true)]
