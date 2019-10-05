@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shoes
   - Hook
+  - StartScreen
+  - OptionsScreen
   layers:
   - Default
   - TransparentFX

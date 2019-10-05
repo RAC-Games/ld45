@@ -30,8 +30,8 @@ public class StartGame : StateMachineBehaviour
         }
         else if (animator.transform.name == "options")
         {
-            GameObject.Find("PauseScreen").SetActive(true);
-            GameObject.Find("StartScreen").SetActive(false);
+            GameObject.Find("UICanvas").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("StartScreen").SetActive(false);
         }
     }
 
