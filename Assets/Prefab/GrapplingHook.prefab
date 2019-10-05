@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 469181741}
   - component: {fileID: 469181740}
   - component: {fileID: 469181739}
+  - component: {fileID: 1491164765}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -105,7 +106,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4bacb99254b8245885e517a17f7f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerChar: {fileID: 0}
+--- !u!114 &1491164765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469181737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07a58f6fef4a8a4e8aac22d58294b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparencyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 5.014927
+      value: 0.98949146
+      inSlope: 0.009134281
+      outSlope: 0.009134281
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0455224
+    - serializedVersion: 3
+      time: 14.992554
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0358209
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2235501111522127904
 GameObject:
   m_ObjectHideFlags: 0
