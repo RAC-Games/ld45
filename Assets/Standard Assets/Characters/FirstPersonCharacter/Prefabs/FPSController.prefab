@@ -452,7 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grapplingSpeed: 0.5
-  hitMarker: {fileID: 0}
+  hitMarker: {fileID: 4950026511462370004, guid: 23f1a3f9555f34e409fd9f1481eccf73,
+    type: 3}
 --- !u!114 &1286135503
 MonoBehaviour:
   m_ObjectHideFlags: 0
