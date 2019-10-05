@@ -6,13 +6,37 @@ using UnityEngine.SceneManagement;
 public class LaserHazard : MonoBehaviour {
 
     BoxCollider collider;
+    /*LineRenderer lineRenderer1;
+    LineRenderer lineRenderer2;
+    LineRenderer lineRenderer3;
+    LineRenderer lineRenderer4;*/
     RayCastPoints raycastpoints;
     public float laserRotationSpeed;
     public float rayLength;
+    /*public GameObject CornerLaser1;
+    public GameObject CornerLaser2;
+    public GameObject CornerLaser3;
+    public GameObject CornerLaser4;
+    private LineRenderer[] lines;
+    LineRenderer lineRenderer;*/
+    //public GameObject Laser1;
 
     private void Start()
     {
         collider = GetComponent<BoxCollider>();
+        //lineRenderer = Laser1.GetComponent<LineRenderer>();
+        /*lineRenderer1 = CornerLaser1.GetComponent<LineRenderer>();
+        lineRenderer1.positionCount = 2;
+        lineRenderer2 = CornerLaser2.GetComponent<LineRenderer>();
+        lineRenderer2.positionCount = 2;
+        lineRenderer3 = CornerLaser3.GetComponent<LineRenderer>();
+        lineRenderer3.positionCount = 2;
+        lineRenderer4 = CornerLaser4.GetComponent<LineRenderer>();
+        lineRenderer4.positionCount = 2;
+        lines[0] = lineRenderer1;
+        lines[1] = lineRenderer2;
+        lines[2] = lineRenderer3;
+        lines[3] = lineRenderer4;*/
     }
     
     private void Update()
@@ -28,6 +52,10 @@ public class LaserHazard : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(transform.position /*rayCastPoints2[i]*/, rayCastPointsDirections[i].normalized, out hit, rayLength))
             {
+                //lineRenderer.SetPosition(0, transform.position);
+                //lineRenderer.SetPosition(1, hit.point);
+                /*lines[i].SetPosition(0, transform.position);
+                lines[i].SetPosition(1, hit.point);*/
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
                     //Insert Death Consequences
