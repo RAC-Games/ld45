@@ -12,10 +12,11 @@ public class UpdateAlpha : MonoBehaviour
         cg = GetComponent<CanvasGroup>();
     }
     float timer = -1;
+    public float showAfter;
     public void Hide()
     {
         cg.alpha = 0.1f;
-        timer = 1;
+        timer = showAfter;
 
     }
     private void Update()
