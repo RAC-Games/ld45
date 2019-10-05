@@ -222,6 +222,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  PauseScreen: {fileID: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -372,9 +373,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.3
@@ -454,6 +453,10 @@ MonoBehaviour:
   grapplingSpeed: 0.5
   hitMarker: {fileID: 4950026511462370004, guid: 23f1a3f9555f34e409fd9f1481eccf73,
     type: 3}
+  ShootSpeed: 0
+  sineMagnitute: 0.2
+  Resolution: 200
+  WaveScale: 100
 --- !u!114 &1286135503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,22 +764,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2462895384655282426, guid: 707fb48ea916ede4b9fdf94638fe118c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 82045557576784992, guid: 707fb48ea916ede4b9fdf94638fe118c,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 5053443323530711387, guid: 707fb48ea916ede4b9fdf94638fe118c,
+    - target: {fileID: 2462895384655282426, guid: 707fb48ea916ede4b9fdf94638fe118c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022865690363807606, guid: 707fb48ea916ede4b9fdf94638fe118c,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5022865690363807606, guid: 707fb48ea916ede4b9fdf94638fe118c,
+    - target: {fileID: 5053443323530711387, guid: 707fb48ea916ede4b9fdf94638fe118c,
         type: 3}
       propertyPath: m_CastShadows
       value: 0
