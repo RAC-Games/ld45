@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartGame : StateMachineBehaviour
 {
@@ -20,7 +19,15 @@ public class StartGame : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        var levelChanger = FindObjectOfType<LevelChanger>();
+        if (animator.transform.name == "start")
+        {
+            levelChanger.FadeToNextScene();
+        }
+        else if (animator.transform.name == "exit")
+        {
+            Application.Quit();
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
