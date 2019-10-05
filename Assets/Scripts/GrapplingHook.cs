@@ -15,6 +15,7 @@ public class GrapplingHook : MonoBehaviour
     bool hasTarget;
     CharacterController characterController;
     LineRenderer lineRenderer;
+    GameObject hook;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,10 @@ public class GrapplingHook : MonoBehaviour
         hasTarget = false;
         shouldMove = false;
         lineRenderer.positionCount = 0;
+        if(hook != null)
+        {
+            Destroy(hook);
+        }
     }
     bool shouldMove = false;
 
@@ -59,9 +64,9 @@ public class GrapplingHook : MonoBehaviour
         {
             grapplingTarget = hit.point;
             hasTarget = true;
-            GameObject.Instantiate(hitMarker, grapplingTarget, Quaternion.identity);
             GenerateLine();
             drawLine();
+            // hook = GameObject.Instantiate(hitMarker, grapplingTarget, Camera.main.transform.rotation);
         }
     }
     async void drawLine()

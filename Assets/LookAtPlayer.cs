@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
 {
-    public GameObject playerChar;
-   
+    private GameObject playerChar;
+
+
+    private void Start()
+    {
+        playerChar = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // Update is called once per frame
     void LateUpdate()
