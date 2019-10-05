@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CloseOptions : MonoBehaviour
 {
+    public GameObject PauseScreen;
+    public GameObject StartScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class CloseOptions : MonoBehaviour
 
     public void Close()
     {
-        GameObject.Find("PauseScreen").SetActive(false);
-        GameObject.Find("StartScreen").SetActive(true);
+        PauseScreen.SetActive(false);
+        StartScreen.SetActive(true);
     }
 }
