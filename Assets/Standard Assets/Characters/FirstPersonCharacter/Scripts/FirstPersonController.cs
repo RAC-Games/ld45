@@ -29,13 +29,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        [Curve(0, 0, 1f, 3f, true)]
+        [SerializeField] bool airTurn;
+        [SerializeField] float ledgeGrabDistance;
+        [SerializeField] float ledgeGrabSpeed;
+        [SerializeField] float SprintDistanceMultiplier;
+        [Curve(0, 0, 0.75f, 2f, true)]
         [SerializeField]
         AnimationCurve jumpDistanceCurve;
 
-        [Curve(0, 0, 1f, 2f, true)]
+        [Curve(0, 0, 0.75f, 1f, true)]
         [SerializeField]
         AnimationCurve jumpHeightCurve;
+        
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -55,6 +60,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool inJump;
         private float jumpStartTime;
         private Vector3 jumpStartPos;
+        private float maxJumpTime;
+        private Vector3 lastDistance;
+        private float lastJumpHeight;
+        private float distanceScale;
+        private Vector3 jumpDirection;        
+
 
         // Use this for initialization
         private void Start()
@@ -79,7 +90,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             inJump = true;
             jumpStartTime = Time.time;
             jumpStartPos = transform.position;
+            maxJumpTime = jumpHeightCurve.keys[jumpHeightCurve.keys.Length - 1].time;
+            lastDistance = Vector3.zero;
+            lastJumpHeight = 0;
+            distanceScale = CrossPlatformInputManager.GetAxis("Vertical");
+            if (!m_IsWalking)
+            {
+                distanceScale *= SprintDistanceMultiplier;
+            }
+            jumpDirection = transform.forward;
         }
+
 
         private void EndJump()
         {
@@ -88,15 +109,48 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void JumpUpdate()
         {
-            print("jumpupdate");
-            float yPos = jumpHeightCurve.Evaluate(Time.time - jumpStartTime);
-            print(yPos);
-            m_MoveDir.y = yPos;
-            if (jumpHeightCurve.keys[jumpHeightCurve.keys.Length-1].time< Time.time - jumpStartTime)
+            float curJumpTime = Time.time - jumpStartTime;
+            float curJumpHeight = jumpHeightCurve.Evaluate(curJumpTime);
+            float deltaHeight = curJumpHeight - lastJumpHeight;
+            lastJumpHeight = curJumpHeight;
+            GetComponent<CharacterController>().Move(deltaHeight*Vector3.up);
+
+            if (airTurn)
+            {
+                jumpDirection = transform.forward;
+            }
+            Vector3 curDistance = jumpDirection*jumpDistanceCurve.Evaluate(curJumpTime);
+            Vector3 deltaDistance = curDistance - lastDistance;
+            lastDistance = curDistance;
+            GetComponent<CharacterController>().Move(deltaDistance*distanceScale);
+
+            if (maxJumpTime < curJumpTime)
             {
                 inJump = false;
             }
+            LedgeGrabUpdate();
         }
+
+        private void LedgeGrabUpdate()
+        {
+            bool footHit = false;
+            bool eyeHit = false;
+            Vector3 footHeight = transform.position + (Vector3.down * m_CharacterController.height / 2)*0.9f;
+            Vector3 eyeHeight = transform.position + (Vector3.up * m_CharacterController.height / 4);
+            if (Physics.Raycast(footHeight, transform.forward, ledgeGrabDistance))
+            {
+                footHit = true;
+            }
+            if(Physics.Raycast(eyeHeight, transform.forward, ledgeGrabDistance))
+            {
+                eyeHit = true;
+            }
+            if (footHit && !eyeHit)
+            {
+                GetComponent<CharacterController>().Move(ledgeGrabSpeed*Vector3.up);
+            }
+        }
+
 
         // Update is called once per frame
         private void Update()
@@ -106,14 +160,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-                print(m_Jump);
-                
             }
 
             if (inJump)
             {
                 m_EndJumping = !CrossPlatformInputManager.GetButton("Jump");
-                print(m_EndJumping);
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -153,8 +204,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
+            if (m_CharacterController.isGrounded)
+            {
+                m_MoveDir.x = desiredMove.x * speed;
+                m_MoveDir.z = desiredMove.z * speed;
+            }
 
             if (inJump)
             {
@@ -224,6 +278,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
+            print("delete me");
+            return;
             if (!m_CharacterController.isGrounded)
             {
                 return;
