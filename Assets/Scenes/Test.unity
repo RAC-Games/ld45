@@ -1707,7 +1707,7 @@ PrefabInstance:
     - target: {fileID: 2840992693336651117, guid: 2b5ad87d55439bd469e4e6b678e030ba,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2840992693336651117, guid: 2b5ad87d55439bd469e4e6b678e030ba,
         type: 3}
@@ -2556,7 +2556,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7058824, g: 0.85490197, b: 0.90588236, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4571,7 +4571,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8692,7 +8692,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8783,7 +8783,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10601,7 +10601,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14633,7 +14633,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14724,7 +14724,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14785,7 +14785,7 @@ Transform:
   m_LocalScale: {x: 1, y: -2.1000006, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &808680621
 Mesh:
@@ -17165,7 +17165,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -22112,7 +22112,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -23107,7 +23107,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.7048772, g: 0.8533522, b: 0.9056604, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1
   m_Range: 21.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
