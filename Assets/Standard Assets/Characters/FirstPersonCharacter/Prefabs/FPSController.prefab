@@ -1144,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 4633040288718273450, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeToScene
+      value: SwitchToScene
       objectReference: {fileID: 0}
     - target: {fileID: 4633040288718273450, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
