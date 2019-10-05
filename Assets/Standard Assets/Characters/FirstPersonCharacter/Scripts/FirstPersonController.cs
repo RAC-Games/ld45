@@ -110,7 +110,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void EndJump()
         {
             inJump = false;
-            jumpCount = 0;
+            
         }
 
         private void JumpUpdate()
@@ -179,6 +179,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+                jumpCount = 0;
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
