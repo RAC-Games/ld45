@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -22,7 +22,8 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Fire1")){
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        {
             ShootHook();
         }
         if (CrossPlatformInputManager.GetButtonUp("Fire1") && hasTarget)
@@ -60,8 +61,8 @@ public class GrapplingHook : MonoBehaviour
     void GrapplingHookUpdate()
     {
         lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, transform.position+transform.right*0.25f+transform.up*-0.1f);
+        lineRenderer.SetPosition(0, transform.position + transform.right * 0.25f + transform.up * -0.1f);
         lineRenderer.SetPosition(1, grapplingTarget);
-        characterController.Move((grapplingTarget-transform.position).normalized*grapplingSpeed); 
+        characterController.Move((grapplingTarget - transform.position).normalized * grapplingSpeed);
     }
 }
