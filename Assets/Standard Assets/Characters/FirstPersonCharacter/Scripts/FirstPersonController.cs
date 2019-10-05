@@ -30,12 +30,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         [SerializeField] bool airTurn;
+        [SerializeField] bool doubleJump;
         [SerializeField] float ledgeGrabDistance;
         [SerializeField] float ledgeGrabSpeed;
         [SerializeField] float SprintDistanceMultiplier;
         [Curve(0, 0, 0.75f, 2f, true)]
         [SerializeField]
-        AnimationCurve jumpDistanceCurve;
+        AnimationCurve jumpDistanceCurve;     
+
 
         [Curve(0, 0, 0.75f, 1f, true)]
         [SerializeField]
@@ -64,7 +66,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 lastDistance;
         private float lastJumpHeight;
         private float distanceScale;
-        private Vector3 jumpDirection;        
+        private Vector3 jumpDirection;
+        private int jumpCount;
 
 
         // Use this for initialization
@@ -85,8 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Jump()
         {
-            //jumpCurve = new AnimationCurve();
-            print("Jump");
+            jumpCount++;
             inJump = true;
             jumpStartTime = Time.time;
             jumpStartPos = transform.position;
@@ -99,12 +101,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 distanceScale *= SprintDistanceMultiplier;
             }
             jumpDirection = transform.forward;
+            PlayJumpSound();
+            m_Jump = false;
+            m_Jumping = true;
         }
 
 
         private void EndJump()
         {
             inJump = false;
+            jumpCount = 0;
         }
 
         private void JumpUpdate()
@@ -222,19 +228,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
+            if(m_Jump && (jumpCount < 1 || (doubleJump && jumpCount < 2))){
+                Jump();
+            }
 
             if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
+                jumpCount = 0;
 
                 if (m_Jump)
                 {
                     //m_MoveDir.y = m_JumpSpeed;
-                    
-                    Jump();
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
+                    //Jump();
                 }
             }
             else if(!inJump)
