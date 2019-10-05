@@ -10559,6 +10559,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 2840992693409670891}
+    - target: {fileID: 8307595216838326004, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2840992693409670888}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &753950303
