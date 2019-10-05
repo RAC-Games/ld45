@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrappelClipping
   m_EditorClassIdentifier: 
   settings:
-    passTag: Grappel
+    passTag: GrappelClipping
     Event: 300
     filterSettings:
       RenderQueueType: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: Grappel
   m_EditorClassIdentifier: 
   settings:
-    passTag: NewRenderObjects
+    passTag: Grappel
     Event: 300
     filterSettings:
       RenderQueueType: 0
