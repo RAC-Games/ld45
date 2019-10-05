@@ -28,6 +28,11 @@ public class StartGame : StateMachineBehaviour
         {
             Application.Quit();
         }
+        else if (animator.transform.name == "options")
+        {
+            GameObject.Find("PauseScreen").SetActive(true);
+            GameObject.Find("StartScreen").SetActive(false);
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
