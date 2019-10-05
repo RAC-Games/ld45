@@ -54,7 +54,7 @@ public class GrapplingHook : MonoBehaviour
         {
             grapplingTarget = hit.point;
             hasTarget = true;
-            GameObject.Instantiate(hitMarker, grapplingTarget, transform.rotation);
+            GameObject.Instantiate(hitMarker, grapplingTarget, Camera.main.transform.rotation);
         }
     }
 

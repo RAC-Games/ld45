@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8200000}
   - component: {fileID: 1657447244}
   - component: {fileID: 1657447243}
+  - component: {fileID: 1286135503}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -451,8 +452,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grapplingSpeed: 0.5
-  hitMarker: {fileID: 244079646899561131, guid: f88da760d5a97404886c804477f4f5cd,
-    type: 3}
+  hitMarker: {fileID: 0}
+--- !u!114 &1286135503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1915b5668ee5b4f9afb3ca325bd64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
