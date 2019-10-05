@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         [SerializeField] bool airTurn;
-        [SerializeField] bool doubleJump;
+        public bool doubleJump;
         [SerializeField] float ledgeGrabDistance;
         [SerializeField] float ledgeGrabSpeed;
         [SerializeField] float SprintDistanceMultiplier;
