@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fade : MonoBehaviour
 {
     GameObject player;
-    [Curve(2, 1, 5, 0, true)]
+    [Curve(1, 1, 3, 0, true)]
 
     [SerializeField]
     AnimationCurve transparencyCurve;
