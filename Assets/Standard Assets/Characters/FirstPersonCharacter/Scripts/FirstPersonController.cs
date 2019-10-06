@@ -101,6 +101,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 SetMouseSensitivity(options.MouseSensitivity);
             });
+
+                SetMouseSensitivity(options.MouseSensitivity);
+            SetFieldOfView(options.FieldOfView);
         }
 
 
