@@ -165,12 +165,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (upwards)
             {
-                var moveDirection = (Vector3.up + Camera.main.transform.forward).normalized;
+                var moveDirection = (Vector3.up + transform.forward).normalized;
                 m_MoveDir = ledgeGrabSpeed * moveDirection;
                 if (!footHit)
                 {
                     upwards = false;
-                    m_MoveDir = (Vector3.up + 2 * Camera.main.transform.forward).normalized;
+                    m_MoveDir = (Vector3.up + 2 * transform.forward).normalized;
                 };
                 return;
             }
