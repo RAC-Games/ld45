@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/No_Items_3RotLasers.unity
     guid: 5a97bc3bc8e173945ab0264690f6989d
   - enabled: 1
-    path: Assets/Scenes/LvlNumbernotclearyet.unity
+    path: Assets/Scenes/GetGrappleLvl.unity
     guid: 63449c04ebddc0f49ae3f84d3c84e471
   - enabled: 1
     path: Assets/Scenes/grappelLevel1.unity
