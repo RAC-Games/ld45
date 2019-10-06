@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 11400000, guid: 8a997e7d9ff69164d8ad66df724b13fe, type: 2}
+  damage: {fileID: 3675320259063618065}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,27 +1224,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1431
-      objectReference: {fileID: 0}
-    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1431
-      objectReference: {fileID: 0}
-    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.1431
-      objectReference: {fileID: 0}
-    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 808
-      objectReference: {fileID: 0}
-    - target: {fileID: 894348848, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 62092e68ade52274ab74c9d820dc5105,
-        type: 3}
     - target: {fileID: 431621359223432609, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1263,36 +1243,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2840992693086939932}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 8307595217124520538}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Hide
-      objectReference: {fileID: 0}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 101023545481873958, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
 --- !u!114 &1164652678 stripped
@@ -1325,16 +1275,16 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3675320260064469490}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8307595217124520538 stripped
+--- !u!114 &3675320259063618065 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4633040288036721576, guid: d4d9019734db7b3458dc1c1aead92625,
+  m_CorrespondingSourceObject: {fileID: 1169751011, guid: d4d9019734db7b3458dc1c1aead92625,
     type: 3}
   m_PrefabInstance: {fileID: 3675320260064469490}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4130c46b5fd6a7143838e33f1cb1b323, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1164652676 stripped
