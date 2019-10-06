@@ -76,7 +76,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public GameObject DeathScreen;
         public Animator animator;
-        public GameObject LedgeFinder;
 
 
         // Use this for initialization
@@ -157,60 +156,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
         Vector3 footHeight;
         Vector3 eyeHeight;
         Vector3 chestHeight;
-        MeshCollider ledgeFinderMeshCollider;
         bool footHit = false;
         bool eyeHit = false;
         bool chestHit = false;
+
+        bool upwards = false;
         private void LedgeGrabUpdate()
         {
-            var Y = LedgeFinder.transform.position.y;
-            print($"{footHit},{chestHit},{eyeHit}");
+            if (upwards)
+            {
+                var moveDirection = (Vector3.up + Camera.main.transform.forward).normalized;
+                m_MoveDir = ledgeGrabSpeed * moveDirection;
+                if (!footHit)
+                {
+                    upwards = false;
+                    m_MoveDir = (Vector3.up + 2 * Camera.main.transform.forward).normalized;
+                };
+                return;
+            }
+            if (!chestHit) return;
             if ((footHit || chestHit) && !eyeHit)
             {
-                ledgeFinderMeshCollider = LedgeFinder.GetComponent<MeshCollider>();
-                if (!goUp)
-                {
-                    while (LedgeFinder.transform.position.y > transform.position.y && collision)
-                    {
-                        ledgeFinderMeshCollider.transform.Translate(Vector3.down);
-                    }
-                    LedgeFinder.transform.position = new Vector3(transform.position.x, Y, transform.position.z);
-                }
-                if (collision || goUp)
-                {
-                    if (eyeHeight.y - collisionHeight < 1 || goUp)
-                    {
-                        goUp = true;
-                        GetComponent<CharacterController>().Move(ledgeGrabSpeed * Vector3.up);
-
-
-                        if (!footHit)
-                        {
-                            goUp = false;
-                            collision = false;
-                        }
-                    }
-
-                }
+                upwards = true;
 
             }
-            else
-            {
-                LedgeFinder.transform.position = new Vector3(transform.position.x, Y, transform.position.z);
-                goUp = false;
-            }
         }
-        bool goUp = false;
-        bool collision = false;
-        float collisionHeight = 0f;
-        Collider otherCollider;
-        private void OnTriggerEnter(Collider other)
-        {
-            collision = true;
-            otherCollider = other;
-            collisionHeight = LedgeFinder.transform.position.y - LedgeFinder.GetComponent<Renderer>().bounds.size.y / 2;
-        }
-
 
         private void OnDrawGizmos()
         {
@@ -275,15 +245,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (paused) return;
             chestHeight = transform.position + (Vector3.down * m_CharacterController.height / 2) * 0.2f;
-            footHeight = transform.position + (Vector3.down * m_CharacterController.height / 2);
-            eyeHeight = transform.position + (Vector3.up * m_CharacterController.height /2);
+            footHeight = transform.position + (Vector3.down * m_CharacterController.height / 2) * 1.2f;
+            eyeHeight = transform.position + (Vector3.up * m_CharacterController.height / 2);
             footHit = false;
             if (Physics.Raycast(footHeight, transform.forward, ledgeGrabDistance))
             {
                 footHit = true;
             }
             chestHit = false;
-            if (Physics.Raycast(chestHeight, transform.forward, ledgeGrabDistance))
+            if (Physics.Raycast(chestHeight, transform.forward, ledgeGrabDistance - 0.1f))
             {
                 chestHit = true;
             }
@@ -292,8 +262,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 eyeHit = true;
             }
-
-            print($"{footHit},{chestHit},{eyeHit}");
+            //print($"{footHit},{chestHit},{eyeHit}");
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -343,7 +312,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (!inJump)
             {
-                m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                if (!upwards) m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 

@@ -10555,32 +10555,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: LedgeFinder
-      value: 
-      objectReference: {fileID: 767760723}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.90136
-      objectReference: {fileID: 0}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.554
-      objectReference: {fileID: 0}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.12216
-      objectReference: {fileID: 0}
-    - target: {fileID: 767760724, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.126
+      propertyPath: ledgeGrabSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -11056,12 +11032,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &767760723 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 767760723, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 742818796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &790545543
 GameObject:
   m_ObjectHideFlags: 0
