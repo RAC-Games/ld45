@@ -11,6 +11,7 @@ public class PickUp : MonoBehaviour
     FirstPersonController fpc;
     public GameObject hookObject;
     public UnlocksSO Unlocks;
+    public GameObject CrossHair;
 
     void Start()
     {
@@ -37,10 +38,12 @@ public class PickUp : MonoBehaviour
         {
             grapplingHook.enabled = true;
             hookObject.SetActive(true);
+            CrossHair.SetActive(true);
         }
         else
         {
             grapplingHook.enabled = false;
+            CrossHair.SetActive(false);
             hookObject.SetActive(false);
         }
     }
