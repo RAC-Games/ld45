@@ -10,7 +10,7 @@ public class PauseScreen : MonoBehaviour
     bool paused;
 
     public GameObject PauseScreenUI;
-
+    public UnlocksSO Unlocks;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,8 @@ public class PauseScreen : MonoBehaviour
         var FPC = GetComponent<FirstPersonController>();
         FPC.paused = false;
         FPC.m_MouseLook.SetCursorLock(true);
-        GetComponent<GrapplingHook>().enabled = true;
+        if(Unlocks.GrapplingHook)
+            GetComponent<GrapplingHook>().enabled = true;
         GetComponent<PickUp>().enabled = true;
         PauseScreenUI.SetActive(false);
     }
