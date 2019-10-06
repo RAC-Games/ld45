@@ -19,7 +19,7 @@ public class TutorialText : MonoBehaviour
 
     private void Update()
     {
-        if (CrossPlatformInputManager.GetButton("Submit") && text.activeSelf)
+        if ((CrossPlatformInputManager.GetButton("Submit") && text.activeSelf) || (Input.GetKey(KeyCode.E) && text.activeSelf))
         {
             text.SetActive(false);
             this.gameObject.SetActive(false);
