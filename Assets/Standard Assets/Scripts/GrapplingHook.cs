@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class GrapplingHook : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GrapplingHook : MonoBehaviour
 
     public GameObject Anchor;
     public GameObject Harpoon;
+    public Image CrossHair;
 
 
     Vector3 A;
@@ -28,11 +30,12 @@ public class GrapplingHook : MonoBehaviour
     public float sineMagnitute = 0.2f;
     public int Resolution = 200;
     public float WaveScale = 100f;
+    public float MaxRange;
+    public float MinRange;
     Vector3 dir;
     float forward;
     float distance;
     Vector3 perpendicular;
-
     Vector3 nextPos;
 
 
@@ -42,9 +45,23 @@ public class GrapplingHook : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
+        if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) return;
+
+        if (hit.distance > MaxRange || hit.distance < MinRange)
+        {
+            CrossHair.color = Color.black;
+            return;
+        }
+        else
+        {
+            CrossHair.color = Color.white;
+        }
+
         if (CrossPlatformInputManager.GetButtonDown("Fire1") && !pullingBack)
         {
             ShootHook();
@@ -57,10 +74,10 @@ public class GrapplingHook : MonoBehaviour
 
     void ReleaseHook()
     {
-        if (drawing!=null)
+        if (drawing != null)
         {
 
-        StopCoroutine(drawing);
+            StopCoroutine(drawing);
         }
         hasTarget = false;
         pullingBack = true;
@@ -78,21 +95,20 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-    
+
     RaycastHit hit;
     Coroutine drawing;
     void ShootHook()
     {
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
-        {
-            grapplingTarget = hit.point;
-            hasTarget = true;
-            GenerateLine();
-            hook = Instantiate(hitMarker, Anchor.transform.position, Camera.main.transform.rotation);
-            drawing = StartCoroutine(drawLine());
-            Harpoon.SetActive(false);
-        }
+
+
+        grapplingTarget = hit.point;
+        hasTarget = true;
+        GenerateLine();
+        hook = Instantiate(hitMarker, Anchor.transform.position, Camera.main.transform.rotation);
+        drawing = StartCoroutine(drawLine());
+        Harpoon.SetActive(false);
     }
     float calcDistanceRatio()
     {
@@ -113,7 +129,7 @@ public class GrapplingHook : MonoBehaviour
     {
         float t = 0;
         float flyRatio = calcDistanceRatio();
-        float time = FlyDuration* flyRatio;
+        float time = FlyDuration * flyRatio;
 
         float ratio;
         int posCount;
@@ -184,7 +200,7 @@ public class GrapplingHook : MonoBehaviour
         A = Anchor.transform.position;
 
         distance = (B - A).magnitude;
-        float WaveScaleCalc = Mathf.Lerp(100,70,distance / WaveScale);
+        float WaveScaleCalc = Mathf.Lerp(100, 70, distance / WaveScale);
         SineLine = new List<Vector3>();
         SineLine.Add(A);
         for (int i = 1; i < Resolution; i++)
