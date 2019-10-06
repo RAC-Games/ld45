@@ -25028,11 +25028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserWheel (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5127065902842765648, guid: e38aebc8f9278ee49b19716310923cf4,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5127065902842765647, guid: e38aebc8f9278ee49b19716310923cf4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25087,32 +25082,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127065902842765647, guid: e38aebc8f9278ee49b19716310923cf4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127065902842765651, guid: e38aebc8f9278ee49b19716310923cf4,
-        type: 3}
-      propertyPath: rayLength
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 703150525, guid: e38aebc8f9278ee49b19716310923cf4, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 741774731, guid: e38aebc8f9278ee49b19716310923cf4, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2132232538, guid: e38aebc8f9278ee49b19716310923cf4, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1448509516, guid: e38aebc8f9278ee49b19716310923cf4, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e38aebc8f9278ee49b19716310923cf4, type: 3}

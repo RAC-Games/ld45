@@ -21,6 +21,7 @@ public class FanCurrent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             controller = other.GetComponent<CharacterController>();
+            //controller.Move(fanVelocity);
             levitation = true;
         }
     }
@@ -33,11 +34,11 @@ public class FanCurrent : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (levitation)
         {
-            controller.Move(fanVelocity * Time.deltaTime);
+            controller.Move(fanVelocity * Time.fixedDeltaTime);
         }
     }
 }
