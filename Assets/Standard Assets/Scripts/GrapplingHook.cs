@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class GrapplingHook : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GrapplingHook : MonoBehaviour
 
     public GameObject Anchor;
     public GameObject Harpoon;
+    public Image CrossHair;
 
 
     Vector3 A;
@@ -28,11 +30,12 @@ public class GrapplingHook : MonoBehaviour
     public float sineMagnitute = 0.2f;
     public int Resolution = 200;
     public float WaveScale = 100f;
+    public float MaxRange;
+    public float MinRange;
     Vector3 dir;
     float forward;
     float distance;
     Vector3 perpendicular;
-
     Vector3 nextPos;
 
 
@@ -42,12 +45,23 @@ public class GrapplingHook : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    public float MaxRange;
-    public float MinRange;
+
 
     // Update is called once per frame
     void Update()
     {
+        if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) return;
+
+        if (hit.distance > MaxRange || hit.distance < MinRange)
+        {
+            CrossHair.color = Color.black;
+            return;
+        }
+        else
+        {
+            CrossHair.color = Color.white;
+        }
+
         if (CrossPlatformInputManager.GetButtonDown("Fire1") && !pullingBack)
         {
             ShootHook();
@@ -86,9 +100,8 @@ public class GrapplingHook : MonoBehaviour
     Coroutine drawing;
     void ShootHook()
     {
-        if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) return;
-        print(hit.distance);
-        if (hit.distance > MaxRange || hit.distance< MinRange) return;
+
+
 
         grapplingTarget = hit.point;
         hasTarget = true;

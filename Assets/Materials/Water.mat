@@ -21,14 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-<<<<<<< HEAD
   m_Shader: {fileID: -6465566751694194690, guid: 7c70cd91b91b8ef44910f925a4ac818a,
     type: 3}
-  m_ShaderKeywords: 
-=======
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF
->>>>>>> 1bd2f7d2a758e383c925b36ce0da7c6a91affa52
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -38,6 +33,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_6394DF57:
+        m_Texture: {fileID: 2800000, guid: d22d378c5fd231f4b93c710227f27a3b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,7 +71,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_16B6740: 2
+    - Vector1_1B1358C8: 0.64
+    - Vector1_37351393: 5
+    - Vector1_451D3E72: 3
     - Vector1_68DA33C7: -0.0001
+    - Vector1_7F82DBF4: 1
     - Vector1_86EF9EBA: 0.2
     - Vector1_8B52FFA5: 0.94
     - Vector1_F9B6D07C: 5.19
@@ -99,7 +102,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_1EB896F3: {r: 0.4525631, g: 0.6928622, b: 0.8490566, a: 0}
+    - Color_5090FD2F: {r: 0.17542985, g: 0.22641507, b: 0.03097188, a: 0}
+    - Color_E23D3AB2: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_2ECDD4C8: {r: 5, g: 5, b: 0, a: 0}
+    - Vector2_E88F48D7: {r: 2, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
