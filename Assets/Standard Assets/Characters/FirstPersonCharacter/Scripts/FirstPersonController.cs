@@ -442,6 +442,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             GetComponent<FirstPersonController>().enabled = false;
             GetComponent<GrapplingHook>().enabled = false;
             GetComponent<PickUp>().enabled = false;
+            GetComponent<PauseScreen>().enabled = false;
             animator.enabled = true;
             animator.SetTrigger("PlayerDeath");
             DeathScreen.SetActive(true);
