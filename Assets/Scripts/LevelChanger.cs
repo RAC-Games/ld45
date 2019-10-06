@@ -20,6 +20,11 @@ public class LevelChanger : MonoBehaviour
         FadeToScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void RestartScene()
+    {
+        FadeToScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void SwitchToScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
