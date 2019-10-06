@@ -9,7 +9,7 @@ public class Doortimer : MonoBehaviour
     public float Maxzeit;
     public bool timer_is_running = false;
     private Animator animator;
-    public TextMesh text;
+    public Image image;
 
     void Start()
     {
@@ -20,22 +20,21 @@ public class Doortimer : MonoBehaviour
     {
         if (timer_is_running == true)
         {
-            timer -= Time.deltaTime;
-            text.text = timer.ToString("##");
-            if (0 > timer)
+            image.fillAmount = 1-(timer / Maxzeit);
+            timer += Time.deltaTime;
+            if (timer > Maxzeit)
             {
                 close_door();
                 timer_is_running = false;
-                text.text = "";
             }
         }
     }
 
     public void starttimer()
     {
-        timer = Maxzeit;
+        timer = 0;
         timer_is_running = true;
-
+        image.fillAmount = 1;
     }
     public void close_door()
     {
