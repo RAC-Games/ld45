@@ -80,7 +80,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469181737}
-  m_Text: 'E: PickUp Item'
+  m_Text: Pick up (E)
   m_OffsetZ: 0
   m_CharacterSize: 37.26
   m_LineSpacing: 1
@@ -195,11 +195,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2235501111522128091}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3876f898b5fbbec4bb0bc3f969e4b73e,
-        type: 3}
-      propertyPath: m_Name
-      value: Grappelinghook
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3876f898b5fbbec4bb0bc3f969e4b73e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,6 +264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3876f898b5fbbec4bb0bc3f969e4b73e,
+        type: 3}
+      propertyPath: m_Name
+      value: Grappelinghook
       objectReference: {fileID: 0}
     - target: {fileID: 1172247784960381854, guid: 3876f898b5fbbec4bb0bc3f969e4b73e,
         type: 3}

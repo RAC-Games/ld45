@@ -80,7 +80,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974187956}
-  m_Text: 'E: PickUp Item'
+  m_Text: Pick up (E)
   m_OffsetZ: 0
   m_CharacterSize: 37.26
   m_LineSpacing: 1

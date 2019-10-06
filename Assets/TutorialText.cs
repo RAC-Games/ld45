@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 
 public class TutorialText : MonoBehaviour
@@ -9,7 +10,7 @@ public class TutorialText : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Collided");
+        
         if (other.CompareTag("Player"))
         {
             text.SetActive(true);
@@ -18,7 +19,11 @@ public class TutorialText : MonoBehaviour
 
     private void Update()
     {
-        
+        if (CrossPlatformInputManager.GetButton("Submit") && text.activeSelf)
+        {
+            text.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
 }

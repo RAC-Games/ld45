@@ -69,7 +69,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 jumpDirection;
         private int jumpCount;
 
-        public  bool paused=false;
+        public bool paused = false;
 
         public OptionsSO options;
 
@@ -152,30 +152,47 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 inJump = false;
             }
-            LedgeGrabUpdate();
         }
+        Vector3 footHeight;
+        Vector3 eyeHeight;
+        Vector3 chestHeight;
+        bool footHit = false;
+        bool eyeHit = false;
+        bool chestHit = false;
 
+        bool upwards = false;
         private void LedgeGrabUpdate()
         {
-            bool footHit = false;
-            bool eyeHit = false;
-            Vector3 footHeight = transform.position + (Vector3.down * m_CharacterController.height / 2) * 0.9f;
-            Vector3 eyeHeight = transform.position + (Vector3.up * m_CharacterController.height / 4);
-            if (Physics.Raycast(footHeight, transform.forward, ledgeGrabDistance))
+            if (upwards)
             {
-                footHit = true;
+                var moveDirection = (Vector3.up + transform.forward).normalized;
+                m_MoveDir = ledgeGrabSpeed * moveDirection;
+                if (!footHit)
+                {
+                    upwards = false;
+                    m_MoveDir = (Vector3.up + 2 * transform.forward).normalized;
+                };
+                return;
             }
-            if (Physics.Raycast(eyeHeight, transform.forward, ledgeGrabDistance))
+            if (!chestHit) return;
+            if ((footHit || chestHit) && !eyeHit)
             {
-                eyeHit = true;
-            }
-            if (footHit && !eyeHit)
-            {
-                GetComponent<CharacterController>().Move(ledgeGrabSpeed * Vector3.up);
+                upwards = true;
+
             }
         }
 
-        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(footHeight, footHeight + transform.forward);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(eyeHeight, eyeHeight + transform.forward);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(chestHeight, chestHeight + transform.forward);
+        }
+
+
         // Update is called once per frame
         private void Update()
         {
@@ -227,7 +244,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void FixedUpdate()
         {
             if (paused) return;
-
+            chestHeight = transform.position + (Vector3.down * m_CharacterController.height / 2) * 0.2f;
+            footHeight = transform.position + (Vector3.down * m_CharacterController.height / 2) * 1.2f;
+            eyeHeight = transform.position + (Vector3.up * m_CharacterController.height / 2);
+            footHit = false;
+            if (Physics.Raycast(footHeight, transform.forward, ledgeGrabDistance))
+            {
+                footHit = true;
+            }
+            chestHit = false;
+            if (Physics.Raycast(chestHeight, transform.forward, ledgeGrabDistance - 0.1f))
+            {
+                chestHit = true;
+            }
+            eyeHit = false;
+            if (Physics.Raycast(eyeHeight, transform.forward, ledgeGrabDistance))
+            {
+                eyeHit = true;
+            }
+            //print($"{footHit},{chestHit},{eyeHit}");
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -244,6 +279,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MoveDir.x = desiredMove.x * speed;
                 m_MoveDir.z = desiredMove.z * speed;
             }
+
+            LedgeGrabUpdate();
 
             if (inJump)
             {
@@ -275,7 +312,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (!inJump)
             {
-                m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                if (!upwards) m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
@@ -408,7 +446,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             animator.SetTrigger("PlayerDeath");
             DeathScreen.SetActive(true);
         }
- 
+
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {

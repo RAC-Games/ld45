@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unlocks
   m_EditorClassIdentifier: 
   _grapplingHook: 0
-  _doubleJump: 1
+  _doubleJump: 0
   OnGrapplingHookChanged:
     m_PersistentCalls:
       m_Calls: []
