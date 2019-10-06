@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -69,11 +69,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 jumpDirection;
         private int jumpCount;
 
+        public  bool paused=false;
+
         public OptionsSO options;
 
-        bool paused = false;
-        bool pausedPressed = false;
-        public GameObject PauseScreen;
 
         public GameObject DeathScreen;
         public Animator animator;
@@ -180,24 +179,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-
-            pausedPressed = CrossPlatformInputManager.GetButtonDown("Cancel");
-            if (pausedPressed && !paused)
-            {
-                paused = true;
-                m_MouseLook.SetCursorLock(false);
-                PauseScreen.SetActive(true);
-                return;
-            }
-
-            if (paused && pausedPressed)
-            {
-                paused = false;
-                m_MouseLook.SetCursorLock(true);
-                PauseScreen.SetActive(false);
-            }
             if (paused) return;
-
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -244,7 +226,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            if (paused) { return; }
+            if (paused) return;
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
