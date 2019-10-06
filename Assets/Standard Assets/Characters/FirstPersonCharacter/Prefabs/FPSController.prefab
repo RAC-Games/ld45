@@ -1111,11 +1111,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 400000}
     m_Modifications:
-    - target: {fileID: 3675320260067780592, guid: d4d9019734db7b3458dc1c1aead92625,
-        type: 3}
-      propertyPath: m_Name
-      value: UICanvas
-      objectReference: {fileID: 0}
     - target: {fileID: 3675320260067780593, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1221,9 +1216,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1270181081, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 3675320260067780592, guid: d4d9019734db7b3458dc1c1aead92625,
+        type: 3}
+      propertyPath: m_Name
+      value: UICanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4633040287752623878, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
