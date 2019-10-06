@@ -22,7 +22,6 @@ public class Fade : MonoBehaviour
     {
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
         float alpha = transparencyCurve.Evaluate(distance);
-        print(distance);
         Color c = textMesh.color;
         c.a = alpha ;
         textMesh.color = c;
