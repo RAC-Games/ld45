@@ -21,14 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-<<<<<<< HEAD
-  m_Shader: {fileID: -6465566751694194690, guid: 7c70cd91b91b8ef44910f925a4ac818a,
-    type: 3}
-  m_ShaderKeywords: 
-=======
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF
->>>>>>> 1bd2f7d2a758e383c925b36ce0da7c6a91affa52
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
