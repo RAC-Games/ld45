@@ -78,11 +78,7 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(Camera.main.transform.position, hit.point);
-    //}
+    
     RaycastHit hit;
     Coroutine drawing;
     void ShootHook()
@@ -188,9 +184,7 @@ public class GrapplingHook : MonoBehaviour
         A = Anchor.transform.position;
 
         distance = (B - A).magnitude;
-        print(distance);
         float WaveScaleCalc = Mathf.Lerp(100,70,distance / WaveScale);
-        print(WaveScale);
         SineLine = new List<Vector3>();
         SineLine.Add(A);
         for (int i = 1; i < Resolution; i++)
