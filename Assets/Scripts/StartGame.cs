@@ -26,7 +26,13 @@ public class StartGame : StateMachineBehaviour
         }
         else if (animator.transform.name == "exit")
         {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+
+#else
             Application.Quit();
+#endif
+
         }
         else if (animator.transform.name == "options")
         {

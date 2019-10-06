@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -69,6 +69,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 jumpDirection;
         private int jumpCount;
 
+        public  bool paused=false;
+
+        public OptionsSO options;
+
+
+        public GameObject DeathScreen;
+        public Animator animator;
+
 
         // Use this for initialization
         private void Start()
@@ -83,6 +91,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
             m_MouseLook.Init(transform, m_Camera.transform);
+
+            // TODO: VOlume
+            options.OnFieldOfViewChanged.AddListener(() =>
+            {
+                SetFieldOfView(options.FieldOfView);
+            });
+            options.OnMouseSensitivityChanged.AddListener(() =>
+            {
+                SetMouseSensitivity(options.MouseSensitivity);
+            });
         }
 
 
@@ -157,29 +175,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        bool paused = false;
-        bool pausedPressed = false;
-        public GameObject PauseScreen;
+        
         // Update is called once per frame
         private void Update()
         {
-            pausedPressed = CrossPlatformInputManager.GetButtonDown("Cancel");
-            if (pausedPressed && !paused)
-            {
-                paused = true;
-                m_MouseLook.SetCursorLock(false);
-                PauseScreen.SetActive(true);
-                return;
-            }
-
-            if(paused && pausedPressed)
-            {
-                paused = false;
-                m_MouseLook.SetCursorLock(true);
-                PauseScreen.SetActive(false);
-            }
-            if (paused) return; 
-
+            if (paused) return;
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -208,22 +208,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
-
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
         }
-
-        public void SetMouseSensitivity(float sens) {
+        private void SetFieldOfView(float fov)
+        {
+            Camera.main.fieldOfView = fov;
+        }
+        private void SetMouseSensitivity(float sens)
+        {
             m_MouseLook.XSensitivity = sens;
             m_MouseLook.YSensitivity = sens;
         }
 
         private void FixedUpdate()
         {
-            if (paused) { return; }
+            if (paused) return;
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -310,7 +314,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
-            print("delete me");
+            //TODO: Delete Me
             return;
             if (!m_CharacterController.isGrounded)
             {
@@ -392,6 +396,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
+        bool isDeath = false;
+        public void Death()
+        {
+            isDeath = true;
+            m_MouseLook.SetCursorLock(false);
+            GetComponent<FirstPersonController>().enabled = false;
+            GetComponent<GrapplingHook>().enabled = false;
+            GetComponent<PickUp>().enabled = false;
+            animator.enabled = true;
+            animator.SetTrigger("PlayerDeath");
+            DeathScreen.SetActive(true);
+        }
+ 
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {

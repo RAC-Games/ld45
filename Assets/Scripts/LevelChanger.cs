@@ -20,8 +20,29 @@ public class LevelChanger : MonoBehaviour
         FadeToScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void RestartScene()
+    {
+        FadeToScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SwitchToScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     public void OnFadeComplete()
     {
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void QuitApplication()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+
+#else
+        Application.Quit();
+#endif
+
     }
 }
