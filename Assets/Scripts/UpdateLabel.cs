@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class UpdateLabel : MonoBehaviour
 {
-    Text text;
+    InputField input;
     private void Start()
     {
-        text = GetComponent<Text>();
+        input = GetComponent<InputField>();
     }
     public void SetLabel(float value)
     {
-        text.text = value.ToString("###");
+        input.text = value.ToString("###.#");
     }
 }
