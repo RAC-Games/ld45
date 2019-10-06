@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Doortimer : MonoBehaviour{
 public float timer=0;
-public int Maxzeit;
+public float Maxzeit;
 public bool timer_is_running=false;
 private Animator animator;
 public Text text;
