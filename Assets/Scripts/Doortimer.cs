@@ -10,12 +10,14 @@ public bool timer_is_running=false;
 private Animator animator;
 public Text text;
 
+
 void Start(){
 animator=GetComponent<Animator>();}
    
     void Update()
     {
 	if (timer_is_running==true){
+		
 		 timer -= Time.deltaTime;
 		 text.text = timer.ToString("##");
 		 if (0>timer)
