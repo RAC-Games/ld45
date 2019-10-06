@@ -7,7 +7,7 @@ public class ElevatorActivator : MonoBehaviour
     public GameObject Lever;
     public GameObject Elevator;
     Animator e_Animator;
-    Animator l_animator
+    Animator l_Animator;
 
 
 
@@ -15,15 +15,15 @@ public class ElevatorActivator : MonoBehaviour
     // public GameObject Activator;
     //private Rigidbody rigidbody_player;
 
-    void Awake()
+    void Start()
     {
-        e_Animator = Elevator.gameObject.GetComponent<Animator>();
-        l_Animator = Lever.gameObject.GetComponent<Animator>();
+        e_Animator = Elevator.GetComponent<Animator>();
+        l_Animator = Lever.GetComponent<Animator>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        TriggerLever()
+
+        TriggerLever();
         Debug.Log("Trigger activated");
 
     }
@@ -31,9 +31,11 @@ public class ElevatorActivator : MonoBehaviour
     private void TriggerLever()
     {
         //play Leversound
-        e_Animator.SetTrigger("LeverMove", true);
-
-        MoveElevator()
+        //l_Animator.SetTrigger("LeverMove");
+        l_Animator.SetBool("Leverbool", true);
+        //wait
+        //l_Animator.SetBool("LeverOn", true);
+        MoveElevator();
         //play Elevator startsound
         
     }
