@@ -167,6 +167,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f98eb79dd687bc64aa85525e2e30aa20, type: 2}
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1250722683685584738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,6 +1532,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f98eb79dd687bc64aa85525e2e30aa20, type: 2}
+        m_MethodName: SetMouseSensitivity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4888464782751011291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,6 +1904,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4315066379958938684}
         m_MethodName: SetLabel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f98eb79dd687bc64aa85525e2e30aa20, type: 2}
+        m_MethodName: SetFieldOfView
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
