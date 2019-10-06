@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dada0da9202e4504fbb5a307f7437881, type: 3}
   m_Name: Unlocks
   m_EditorClassIdentifier: 
-  _grapplingHook: 0
-  _doubleJump: 1
+  _grapplingHook: 1
+  _doubleJump: 0
   OnGrapplingHookChanged:
     m_PersistentCalls:
       m_Calls: []
