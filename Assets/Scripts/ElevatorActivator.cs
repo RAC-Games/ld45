@@ -4,21 +4,46 @@ using UnityEngine;
 
 public class ElevatorActivator : MonoBehaviour
 {
-    public GameObject Player;
+    public GameObject Lever;
+    public GameObject Elevator;
+    Animator e_Animator;
+    Animator l_animator
+
+
+
+    //public GameObject Player;
     // public GameObject Activator;
-    private Rigidbody rigidbody_player;
+    //private Rigidbody rigidbody_player;
 
-    //void Awake()
-    //{
-    //    rigidbody_player = Player.gameObject.GetComponent<Rigidbody>();
-
-    //}
+    void Awake()
+    {
+        e_Animator = Elevator.gameObject.GetComponent<Animator>();
+        l_Animator = Lever.gameObject.GetComponent<Animator>();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        // Change the cube color to green.
-        MeshRenderer meshRend = GetComponent<MeshRenderer>();
-        meshRend.material.color = Color.green;
+        
+        TriggerLever()
         Debug.Log("Trigger activated");
+
     }
 
+    private void TriggerLever()
+    {
+        //play Leversound
+        e_Animator.SetTrigger("LeverMove", true);
+
+        MoveElevator()
+        //play Elevator startsound
+        
+    }
+
+
+    private void MoveElevator()
+    {
+        e_Animator.SetBool("LeverOn", true);
+        //play Elevator movesound
+    }
+    
 }
+
