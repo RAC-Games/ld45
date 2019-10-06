@@ -36,13 +36,18 @@ public class PauseScreen : MonoBehaviour
 
         if (paused && pausedPressed)
         {
-            paused = false;
-            var FPC = GetComponent<FirstPersonController>();
-            FPC.paused = false;
-            FPC.m_MouseLook.SetCursorLock(true);
-            GetComponent<GrapplingHook>().enabled = true;
-            GetComponent<PickUp>().enabled = true;
-            PauseScreenUI.SetActive(false);
+            DisablePause();
         }
+    }
+
+    public void DisablePause()
+    {
+        paused = false;
+        var FPC = GetComponent<FirstPersonController>();
+        FPC.paused = false;
+        FPC.m_MouseLook.SetCursorLock(true);
+        GetComponent<GrapplingHook>().enabled = true;
+        GetComponent<PickUp>().enabled = true;
+        PauseScreenUI.SetActive(false);
     }
 }
