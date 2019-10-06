@@ -383,7 +383,7 @@ MonoBehaviour:
   airTurn: 0
   doubleJump: 0
   ledgeGrabDistance: 0.7
-  ledgeGrabSpeed: 0.1
+  ledgeGrabSpeed: 5
   SprintDistanceMultiplier: 1.2
   jumpDistanceCurve:
     serializedVersion: 2
