@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/grappelLevel1.unity
     guid: 13781026c091bad43a870a41a11c415c
   - enabled: 1
+    path: Assets/Scenes/GrappleLevel2.unity
+    guid: 41cf641761a57ac4b9bfce71973155d0
+  - enabled: 1
     path: Assets/Scenes/Levels/End.unity
     guid: c72ef8ef2a72a364aa4c9d535ea14e2b
   m_configObjects: {}
