@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6201566545990507779}
   - component: {fileID: 1143111935555921557}
   - component: {fileID: 7785542222340442145}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NextLevelTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
