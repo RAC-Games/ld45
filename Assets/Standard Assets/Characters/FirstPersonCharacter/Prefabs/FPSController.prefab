@@ -468,6 +468,8 @@ MonoBehaviour:
   sineMagnitute: 0.2
   Resolution: 200
   WaveScale: 50
+  MaxRange: 30
+  MinRange: 2
   TravelAfterShoot: 1
 --- !u!114 &1286135503
 MonoBehaviour:
@@ -1219,6 +1221,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1270181081, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4633040287752623878, guid: d4d9019734db7b3458dc1c1aead92625,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1238,6 +1244,27 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2840992693086939932}
+    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1431
+      objectReference: {fileID: 0}
+    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1431
+      objectReference: {fileID: 0}
+    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1431
+      objectReference: {fileID: 0}
+    - target: {fileID: 894348847, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 808
+      objectReference: {fileID: 0}
+    - target: {fileID: 894348848, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62092e68ade52274ab74c9d820dc5105,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d9019734db7b3458dc1c1aead92625, type: 3}
 --- !u!224 &30574083 stripped

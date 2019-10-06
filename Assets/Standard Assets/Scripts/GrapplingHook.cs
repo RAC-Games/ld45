@@ -42,6 +42,9 @@ public class GrapplingHook : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
+    public float MaxRange;
+    public float MinRange;
+
     // Update is called once per frame
     void Update()
     {
@@ -57,10 +60,10 @@ public class GrapplingHook : MonoBehaviour
 
     void ReleaseHook()
     {
-        if (drawing!=null)
+        if (drawing != null)
         {
 
-        StopCoroutine(drawing);
+            StopCoroutine(drawing);
         }
         hasTarget = false;
         pullingBack = true;
@@ -78,21 +81,21 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-    
+
     RaycastHit hit;
     Coroutine drawing;
     void ShootHook()
     {
+        if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) return;
+        print(hit.distance);
+        if (hit.distance > MaxRange || hit.distance< MinRange) return;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
-        {
-            grapplingTarget = hit.point;
-            hasTarget = true;
-            GenerateLine();
-            hook = Instantiate(hitMarker, Anchor.transform.position, Camera.main.transform.rotation);
-            drawing = StartCoroutine(drawLine());
-            Harpoon.SetActive(false);
-        }
+        grapplingTarget = hit.point;
+        hasTarget = true;
+        GenerateLine();
+        hook = Instantiate(hitMarker, Anchor.transform.position, Camera.main.transform.rotation);
+        drawing = StartCoroutine(drawLine());
+        Harpoon.SetActive(false);
     }
     float calcDistanceRatio()
     {
@@ -113,7 +116,7 @@ public class GrapplingHook : MonoBehaviour
     {
         float t = 0;
         float flyRatio = calcDistanceRatio();
-        float time = FlyDuration* flyRatio;
+        float time = FlyDuration * flyRatio;
 
         float ratio;
         int posCount;
@@ -184,7 +187,7 @@ public class GrapplingHook : MonoBehaviour
         A = Anchor.transform.position;
 
         distance = (B - A).magnitude;
-        float WaveScaleCalc = Mathf.Lerp(100,70,distance / WaveScale);
+        float WaveScaleCalc = Mathf.Lerp(100, 70, distance / WaveScale);
         SineLine = new List<Vector3>();
         SineLine.Add(A);
         for (int i = 1; i < Resolution; i++)
