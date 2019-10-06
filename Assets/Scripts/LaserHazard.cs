@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class LaserHazard : MonoBehaviour {
 
     private BoxCollider collider;
-   
+
+    private FirstPersonController controller;
     private RayCastPoints raycastpoints;
     public float laserRotationSpeed;
     public float rayLength;
@@ -34,12 +36,14 @@ public class LaserHazard : MonoBehaviour {
         {
             lineRenderers[i].origin = transform.position;
             Debug.DrawRay(transform.position , rayCastPointsDirections[i].normalized * rayLength, Color.red);
-            if (Physics.Raycast(transform.position , rayCastPointsDirections[i].normalized, out RaycastHit hit, rayLength))
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position , rayCastPointsDirections[i].normalized, out hit, rayLength))
             {
                 
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
-                    print("hit");
+                    controller = hit.collider.GetComponent<FirstPersonController>();
+                    controller.Death();
                 }
             }
             if (hit.point != Vector3.zero)
