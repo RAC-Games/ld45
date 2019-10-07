@@ -213,7 +213,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_EndJumping = !CrossPlatformInputManager.GetButton("Jump");
             }
-
+            print(m_PreviouslyGrounded + "-" + m_CharacterController.isGrounded + " ?= false - true");
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
@@ -338,12 +338,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void ProgressStepCycle(float speed)
         {
+            
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) * 
                              Time.fixedDeltaTime;
+                
             }
-
             if (!(m_StepCycle > m_NextStep))
             {
                 return;
@@ -357,8 +358,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayFootStepAudio()
         {
-            //TODO: Delete Me
-            return;
             if (!m_CharacterController.isGrounded)
             {
                 return;
