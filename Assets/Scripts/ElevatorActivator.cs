@@ -22,9 +22,11 @@ public class ElevatorActivator : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-
-        TriggerLever();
-        Debug.Log("Trigger activated");
+        if (other.CompareTag("Player"))
+        {
+            TriggerLever();
+            Debug.Log("Trigger activated");
+        }
 
     }
 
