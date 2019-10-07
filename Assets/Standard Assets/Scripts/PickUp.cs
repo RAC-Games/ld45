@@ -7,6 +7,7 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent(typeof(GrapplingHook))]
 public class PickUp : MonoBehaviour
 {
+    FlashlightToggle flashlight;
     GrapplingHook grapplingHook;
     FirstPersonController fpc;
     public GameObject hookObject;
@@ -15,6 +16,7 @@ public class PickUp : MonoBehaviour
 
     void Start()
     {
+        flashlight = GetComponentInChildren<FlashlightToggle>();
         grapplingHook = GetComponent<GrapplingHook>();
         fpc = GetComponent<FirstPersonController>();
         grapplingHook.enabled = false;
@@ -28,8 +30,16 @@ public class PickUp : MonoBehaviour
         {
             UpdateDoubleJump();
         });
+
+        Unlocks.OnFlashlightChanged.AddListener(() =>
+        {
+            UpdateFlashlight();
+        });
         UpdateDoubleJump();
         UpdateGrapplingHook();
+        UpdateFlashlight();
+
+
     }
 
     void UpdateGrapplingHook()
@@ -62,6 +72,22 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    private void UpdateFlashlight()
+    {
+        if (Unlocks.Flashlight)
+        {
+            
+            flashlight.enabled = true;
+
+        }
+        else
+        {
+            flashlight.enabled = false;
+
+        }
+
+    }
+
     // Update is called once per frame
     private void OnTriggerStay(Collider other)
     {
@@ -74,6 +100,10 @@ public class PickUp : MonoBehaviour
             if (other.CompareTag("Shoes"))
             {
                 Unlocks.DoubleJump = true;
+            }
+            if (other.CompareTag("Flashlight"))
+            {
+                Unlocks.Flashlight = true;
             }
             other.gameObject.SetActive(false);
         }
