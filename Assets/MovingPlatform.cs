@@ -9,7 +9,7 @@ public class MovingPlatform : MonoBehaviour
     private bool goRight;
     public bool goRightAtStart;
     public float cycleTime;
-    private float cycleStartTime;
+    //private float cycleStartTime;
     public bool horizontal;
     public float platformSpeed;
     private bool moving;
@@ -17,7 +17,8 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         moving = true;
-        cycleStartTime = Time.time;
+        StartCoroutine("doMovement");
+        //cycleStartTime = Time.time;
         if (goRightAtStart)
         {
             goRight = true;
@@ -49,7 +50,8 @@ public class MovingPlatform : MonoBehaviour
         {
             return;
         }
-        TurnAround();
+        //TurnAround();
+        
         if (goLeft)
         {
             if (horizontal)
@@ -71,7 +73,22 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    void TurnAround()
+    IEnumerator doMovement()
+    {
+        while (true)
+        {
+            if (moving)
+            {
+                goRight = !goRight;
+                goLeft = !goLeft;
+                yield return new WaitForSeconds(cycleTime);
+            }
+            yield return new WaitForSeconds(0);
+        }
+
+    }
+
+    /*void TurnAround()
     {
         if (Time.time > cycleStartTime + cycleTime)
         {
@@ -79,5 +96,5 @@ public class MovingPlatform : MonoBehaviour
             goRight = !goRight;
             goLeft = !goLeft;
         }
-    }
+    }*/
 }
