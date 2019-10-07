@@ -8,6 +8,7 @@ TagManager:
   - Hook
   - StartScreen
   - OptionsScreen
+  - Flashlight
   layers:
   - Default
   - TransparentFX
