@@ -378,9 +378,16 @@ MonoBehaviour:
   m_JumpBob:
     BobDuration: 0
     BobAmount: 0
-  m_StepInterval: 0
-  m_FootstepSounds: []
-  m_JumpSound: {fileID: 0}
+  m_StepInterval: 3
+  m_FootstepSounds:
+  - {fileID: 8300000, guid: 753dc9e3d1f44734f863aafa8ea5b597, type: 3}
+  - {fileID: 8300000, guid: 601bcce2639d90346be4f594720647bf, type: 3}
+  - {fileID: 8300000, guid: 95bf845bb58b0374da6da1a3b971177c, type: 3}
+  - {fileID: 8300000, guid: 986f83ca7292bd94a8ce8c1949a608df, type: 3}
+  - {fileID: 8300000, guid: cec4f6bf338ec4f408575da682aa4c3e, type: 3}
+  - {fileID: 8300000, guid: 654a4731e0415c343b971e63ec328e14, type: 3}
+  - {fileID: 8300000, guid: b681fde9f7eee7c46a576a41cc16af37, type: 3}
+  m_JumpSound: {fileID: 8300000, guid: 5384a2d719165e1469d298700c9dc745, type: 3}
   m_LandSound: {fileID: 0}
   airTurn: 0
   doubleJump: 0
@@ -1103,6 +1110,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 379950063338206703, guid: 1f9365447b57ab34291d3e6eec481f68,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Unlocked: Doublejump'
+      objectReference: {fileID: 0}
     - target: {fileID: 1083474443715121518, guid: 1f9365447b57ab34291d3e6eec481f68,
         type: 3}
       propertyPath: m_Text
@@ -1119,11 +1131,6 @@ PrefabInstance:
       value: 'Unlocked: Grapplinghook
 
 '
-      objectReference: {fileID: 0}
-    - target: {fileID: 379950063338206703, guid: 1f9365447b57ab34291d3e6eec481f68,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Unlocked: Doublejump'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9365447b57ab34291d3e6eec481f68, type: 3}
