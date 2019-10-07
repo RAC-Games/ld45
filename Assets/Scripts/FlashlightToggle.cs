@@ -19,5 +19,6 @@ public class FlashlightToggle : MonoBehaviour
         {
             light.enabled = !light.enabled;
         }
+        
     }
 }

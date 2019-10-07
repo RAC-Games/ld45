@@ -8,6 +8,7 @@ public class UnlocksSO : ScriptableObject
 {
     [SerializeField] private bool _grapplingHook = false;
     [SerializeField] private bool _doubleJump = false;
+    [SerializeField] private bool _flashlight = false;
 
     public bool GrapplingHook
     {
@@ -27,15 +28,29 @@ public class UnlocksSO : ScriptableObject
             OnDoubleJumpChanged.Invoke();
         }
     }
+    public bool Flashlight
+    {
+        get => _flashlight;
+        set
+        {
+            _flashlight = value;
+            OnFlashlightChanged.Invoke();
+        }
+    }
     public void SetGrapplingHook(bool gh)
     {
         GrapplingHook = gh;
     }
-
     public void SetDoubleJump(bool dj)
     {
         DoubleJump = dj;
     }
+
+    public void SetFlashlight(bool fl)
+    {
+        Flashlight = fl;
+    }
     public UnityEvent OnGrapplingHookChanged = new UnityEvent();
     public UnityEvent OnDoubleJumpChanged = new UnityEvent();
+    public UnityEvent OnFlashlightChanged = new UnityEvent();
 }
