@@ -101,7 +101,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1EB896F3: {r: 0.4525631, g: 0.6928622, b: 0.8490566, a: 0}
+    - Color_1EB896F3: {r: 0.3448291, g: 0.49649236, b: 0.5943396, a: 0}
     - Color_5090FD2F: {r: 0.17542985, g: 0.22641507, b: 0.03097188, a: 0}
     - Color_E23D3AB2: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_2ECDD4C8: {r: 5, g: 5, b: 0, a: 0}
