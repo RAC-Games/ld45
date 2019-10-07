@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grapplingHook: 1
   _doubleJump: 1
+  _flashlight: 1
   OnGrapplingHookChanged:
     m_PersistentCalls:
       m_Calls: []
   OnDoubleJumpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFlashlightChanged:
     m_PersistentCalls:
       m_Calls: []
