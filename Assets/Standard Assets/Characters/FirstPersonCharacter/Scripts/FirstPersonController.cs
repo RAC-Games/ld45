@@ -95,10 +95,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // TODO: VOlume
             options.OnFieldOfViewChanged.AddListener(() =>
             {
+                print("FOV updated");
                 SetFieldOfView(options.FieldOfView);
             });
             options.OnMouseSensitivityChanged.AddListener(() =>
             {
+                print("Mouse updated");
                 SetMouseSensitivity(options.MouseSensitivity);
             });
 
