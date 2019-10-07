@@ -8,6 +8,7 @@ TagManager:
   - Hook
   - StartScreen
   - OptionsScreen
+  - Anchor
   layers:
   - Default
   - TransparentFX

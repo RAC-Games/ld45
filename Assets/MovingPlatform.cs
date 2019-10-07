@@ -12,9 +12,11 @@ public class MovingPlatform : MonoBehaviour
     private float cycleStartTime;
     public bool horizontal;
     public float platformSpeed;
+    private bool moving;
 
     private void Start()
     {
+        moving = true;
         cycleStartTime = Time.time;
         if (goRightAtStart)
         {
@@ -25,8 +27,28 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Anchor"))
+        {
+            moving = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Anchor"))
+        {
+            moving = true;
+        }
+    }
+
     private void Update()
     {
+        if (!moving)
+        {
+            return;
+        }
         TurnAround();
         if (goLeft)
         {
