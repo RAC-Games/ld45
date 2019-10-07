@@ -10,6 +10,7 @@ public class PickUp : MonoBehaviour
     FlashlightToggle flashlight;
     GrapplingHook grapplingHook;
     FirstPersonController fpc;
+    ExplainItems explain;
     public GameObject hookObject;
     public UnlocksSO Unlocks;
     public GameObject CrossHair;
@@ -17,6 +18,7 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         flashlight = GetComponentInChildren<FlashlightToggle>();
+        explain = GetComponentInChildren<ExplainItems>();
         grapplingHook = GetComponent<GrapplingHook>();
         fpc = GetComponent<FirstPersonController>();
         grapplingHook.enabled = false;
@@ -39,7 +41,12 @@ public class PickUp : MonoBehaviour
         UpdateGrapplingHook();
         UpdateFlashlight();
 
+        
+    }
 
+     void Update()
+    {
+       
     }
 
     void UpdateGrapplingHook()
@@ -93,17 +100,23 @@ public class PickUp : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButtonDown("Use"))
         {
+            
             if (other.CompareTag("Hook"))
             {
-                    Unlocks.GrapplingHook = true;
+                Unlocks.GrapplingHook = true;
+                explain.GrapplingHook();    
             }
             if (other.CompareTag("Shoes"))
             {
                 Unlocks.DoubleJump = true;
+                explain.DoubleJump();
             }
             if (other.CompareTag("Flashlight"))
             {
                 Unlocks.Flashlight = true;
+                
+                explain.Flashlight();
+                
             }
             other.gameObject.SetActive(false);
         }
