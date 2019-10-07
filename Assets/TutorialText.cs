@@ -20,6 +20,7 @@ public class TutorialText : MonoBehaviour
             }
             text.SetActive(true);
             this.GetComponent<Collider>().enabled = false;
+            StartCoroutine("Deactivate");
         }
     }
 
@@ -31,6 +32,14 @@ public class TutorialText : MonoBehaviour
             text.SetActive(false);
             this.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(5);
+        
+        text.GetComponent<Animator>().SetTrigger("Off");
+
     }
 
 }
