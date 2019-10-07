@@ -10,6 +10,8 @@ public class MovingPlatform : MonoBehaviour
     public bool goRightAtStart;
     public float cycleTime;
     private float cycleStartTime;
+    public bool horizontal;
+    public float platformSpeed;
 
     private void Start()
     {
@@ -28,10 +30,22 @@ public class MovingPlatform : MonoBehaviour
         TurnAround();
         if (goLeft)
         {
-            transform.Translate(new Vector3(-Time.deltaTime, 0, 0));
+            if (horizontal)
+            {
+                transform.Translate(new Vector3(-Time.deltaTime * platformSpeed, 0, 0));
+            } else
+            {
+                transform.Translate(new Vector3(0, 0, -Time.deltaTime * platformSpeed));
+            }
         } else
         {
-            transform.Translate(new Vector3(Time.deltaTime, 0, 0));
+            if (horizontal)
+            {
+                transform.Translate(new Vector3(Time.deltaTime * platformSpeed, 0, 0));
+            } else
+            {
+                transform.Translate(new Vector3(0, 0, Time.deltaTime * platformSpeed));
+            }
         }
     }
 
