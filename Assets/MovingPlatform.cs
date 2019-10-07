@@ -8,16 +8,16 @@ public class MovingPlatform : MonoBehaviour
     private bool goLeft;
     private bool goRight;
     public bool goRightAtStart;
-    public float cycleTime;
-    private float cycleStartTime;
     public bool horizontal;
     public float platformSpeed;
     private bool moving;
+    public float maxX, minX, maxZ, minZ;
 
     private void Start()
     {
         moving = true;
-        cycleStartTime = Time.time;
+        //StartCoroutine("doMovement");
+        //cycleStartTime = Time.time;
         if (goRightAtStart)
         {
             goRight = true;
@@ -50,6 +50,7 @@ public class MovingPlatform : MonoBehaviour
             return;
         }
         TurnAround();
+        
         if (goLeft)
         {
             if (horizontal)
@@ -71,13 +72,34 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    /*IEnumerator doMovement()
+    {
+        while (true)
+        {
+            if (moving)
+            {
+                goRight = !goRight;
+                goLeft = !goLeft;
+                yield return new WaitForSeconds(cycleTime);
+            }
+            yield return new WaitForSeconds(0);
+        }
+
+    }*/
+
     void TurnAround()
     {
-        if (Time.time > cycleStartTime + cycleTime)
+        if (transform.localPosition.x > maxX || transform.localPosition.x < minX)
         {
-            cycleStartTime = Time.time;
             goRight = !goRight;
             goLeft = !goLeft;
         }
+
+        if (transform.localPosition.z > maxZ || transform.localPosition.z < minZ)
+        {
+            goRight = !goRight;
+            goLeft = !goLeft;
+        }
+
     }
 }
