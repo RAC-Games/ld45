@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8861746810819719620}
   - component: {fileID: 549502354086628338}
   - component: {fileID: 6096941584867718923}
+  - component: {fileID: 8296172667624758737}
   m_Layer: 0
   m_Name: FlashlightToPutInGame
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -80,6 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &8296172667624758737
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521525418765239255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.024
+  m_Center: {x: -0.0000002409684, y: 0.0031298355, z: 0.0000014197791}
 --- !u!1001 &1079310006999562496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,7 +109,7 @@ PrefabInstance:
     - target: {fileID: 8375105978625059124, guid: 6ad81598935999740874e2a92239d7e8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00501
       objectReference: {fileID: 0}
     - target: {fileID: 8375105978625059124, guid: 6ad81598935999740874e2a92239d7e8,
         type: 3}
@@ -161,6 +175,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].time
+      value: 0.009155273
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].value
+      value: 1.0019531
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].time
+      value: 3.500183
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].value
+      value: -0.49864197
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].inSlope
+      value: -1.086832
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].outSlope
+      value: -1.086832
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].inWeight
+      value: 0.045813974
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375105979748192835, guid: 6ad81598935999740874e2a92239d7e8,
+        type: 3}
+      propertyPath: transparencyCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad81598935999740874e2a92239d7e8, type: 3}
