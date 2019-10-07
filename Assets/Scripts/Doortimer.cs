@@ -15,12 +15,25 @@ public class Doortimer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-
+    bool loadCircle = false;
     void Update()
     {
+        if (loadCircle)
+        {
+            if (1 - image.fillAmount > Time.deltaTime)
+            {
+                image.fillAmount += Time.deltaTime;
+            }
+            if (image.fillAmount > 0.9)
+            {
+                loadCircle = false;
+                timer_is_running = true;
+                image.fillAmount = 1;
+            }
+        }
         if (timer_is_running == true)
         {
-            image.fillAmount = 1-(timer / Maxzeit);
+            image.fillAmount = 1 - (timer / Maxzeit);
             timer += Time.deltaTime;
             if (timer > Maxzeit)
             {
@@ -32,9 +45,10 @@ public class Doortimer : MonoBehaviour
 
     public void starttimer()
     {
+        timer_is_running = false;
+        loadCircle = true;
         timer = 0;
-        timer_is_running = true;
-        image.fillAmount = 1;
+
     }
     public void close_door()
     {
@@ -43,7 +57,10 @@ public class Doortimer : MonoBehaviour
 
     public void open_door()
     {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Door_open"))
+        {
         animator.SetTrigger("Door_open");
+        }
     }
 
 }
