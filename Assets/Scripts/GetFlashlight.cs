@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorActivator : MonoBehaviour
+public class /*ElevatorActivator*/GetFlashlight : MonoBehaviour
 {
     public GameObject Lever;
     public GameObject Elevator;
     Animator e_Animator;
     Animator l_Animator;
 
-
+    private void Update()
+    {
+        //TODO: fix this!
+        print("!!!!!Elevator Activator auskommentiert weil buggy!!!!!!!");
+    }
 
     //public GameObject Player;
     // public GameObject Activator;
     //private Rigidbody rigidbody_player;
 
-    void Start()
+    /*void Start()
     {
         e_Animator = Elevator.GetComponent<Animator>();
         l_Animator = Lever.GetComponent<Animator>();
@@ -37,7 +41,7 @@ public class ElevatorActivator : MonoBehaviour
         //l_Animator.SetBool("LeverOn", true);
  
 
-    }
+    }*/
 
 
 
