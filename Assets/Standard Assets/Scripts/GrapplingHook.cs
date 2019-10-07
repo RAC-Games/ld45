@@ -37,12 +37,18 @@ public class GrapplingHook : MonoBehaviour
     float distance;
     Vector3 perpendicular;
     Vector3 nextPos;
+    AudioSource audioLoop;
+    AudioSource audioStart;
+    AudioSource audioEnd;
 
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         lineRenderer = GetComponent<LineRenderer>();
+        audioLoop = GetComponents<AudioSource>()[2];
+        audioStart = GetComponents<AudioSource>()[3];
+        audioEnd = GetComponents<AudioSource>()[1];
     }
 
 
@@ -79,6 +85,8 @@ public class GrapplingHook : MonoBehaviour
 
             StopCoroutine(drawing);
         }
+        audioLoop.Stop();
+        audioEnd.Play();
         hasTarget = false;
         pullingBack = true;
         StartCoroutine(RemoveLine());
@@ -109,6 +117,8 @@ public class GrapplingHook : MonoBehaviour
         hook = Instantiate(hitMarker, Anchor.transform.position, Camera.main.transform.rotation);
         drawing = StartCoroutine(drawLine());
         Harpoon.SetActive(false);
+        audioStart.Play();
+        audioLoop.Play();
     }
     float calcDistanceRatio()
     {
